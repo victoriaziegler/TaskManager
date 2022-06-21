@@ -7,8 +7,8 @@ USER_MODEL = settings.AUTH_USER_MODEL
 
 class Task(models.Model):
     name = models.CharField(max_length=200)
-    start_date = models.DateTimeField()
-    due_date = models.DateTimeField()
+    start_date = models.DateTimeField(null=False)
+    due_date = models.DateTimeField(null=False)
     is_completed = models.BooleanField(default=False)
     project = models.ForeignKey(
         "projects.Project",
