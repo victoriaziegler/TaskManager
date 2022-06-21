@@ -1,9 +1,17 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import Task
 
 # Create your views here.
+
+
+class TaskListView(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = "tasks/mine.html"
+
+    def get_queryset(self):
+        return Task.objects.filter(assignee=self.request.user)
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
