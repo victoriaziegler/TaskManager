@@ -27,7 +27,11 @@
                                 <td>{{ task.assignee }}</td>
                                 <td>{{ task.start_date }}</td>
                                 <td>{{ task.due_date }}</td>
-                                <td>{{ task.is_completed }}</td>
+                                {% if task.is_completed == True %}
+                                    <td>yes</td>
+                                {% else %}
+                                    <td>no</td>
+                                {% endif %}
                             </tr>
                         </tbody>
                     {% endfor %}
